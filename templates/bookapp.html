@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+<header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="container">
+            <h2>Book an Appointment</h2>
+            <form action="{{ url_for('bookapp') }}" method="post" onsubmit="showPopup(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" name="fullName" id="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" name="phone" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctor">Select Doctor:</label>
+                    <select name="doctor" id="doctor" required>
+                        <option value="dr-smith">Dr. Kim Ji-yoon(Diabetes)</option>
+                        <option value="dr-jones">Dr. Kim Joon-ho(Heart)</option>
+                        <option value="dr-smith">Dr. Lee Min-seok(Parkinson)</option>
+                        <option value="dr-jones">Dr. Park Hyun-woo(Diabetes)</option>
+                        <option value="dr-smith">Dr. Kim Woo-jin(Heart)</option>
+                        <option value="dr-jones">Dr. Kim Chang-min(Parkinson)</option>
+                        <option value="dr-smith">Dr. Lee Jae-hyun(Diabetes)</option>
+                        <option value="dr-jones">Dr. Jung Hae-rin(Heart)</option>
+                        <!-- Add more doctor options as needed -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="appointmentDate">Preferred Appointment Date:</label>
+                    <input type="date" name="appointmentDate" id="appointmentDate" required>
+                </div>
+                <button type="submit">Book Appointment</button>
+</form>
+        </section>
+    </main>
+<div id="popup" class="popup">
+        <p>Appointment booked successfully!</p>
+    </div>
+<script>
+        function showPopup(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Display the popup
+            document.getElementById('popup').style.display = 'block';
+            // Hide the popup and redirect after 3 seconds (adjust as needed)
+            setTimeout(function() {
+                document.getElementById('popup').style.display = 'none';
+                window.location.href = "{{ url_for('index') }}" ;
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

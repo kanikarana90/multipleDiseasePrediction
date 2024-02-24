@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you think you have Parkinson's Disease?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main class="box1">
+        <section class="container">
+            <h2>Predict Parkinson's Disease</h2>
+            <div class="box2">
+                <form action="{{ url_for('resultpark') }}" method="post">
+                    <div class="box3">
+                        <label for="MDVPFo">MDVP Fo (Hz):</label>
+                        <input type="text" name="MDVPFo" id="MDVPFo" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPFhi">MDVP Fhi (Hz):</label>
+                        <input type="text" name="MDVPFhi" id="MDVPFhi" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPFlo">MDVP Flo (Hz):</label>
+                        <input type="text" name="MDVPFlo" id="MDVPFlo" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPJitter">MDVP Jitter (%):</label>
+                        <input type="text" name="MDVPJitter" id="MDVPJitter" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPJitterAbs">MDVP Jitter Abs:</label>
+                        <input type="text" name="MDVPJitterAbs" id="MDVPJitterAbs" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPRAP">MDVP RAP:</label>
+                        <input type="text" name="MDVPRAP" id="MDVPRAP" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPPPQ">MDVP PPQ:</label>
+                        <input type="text" name="MDVPPPQ" id="MDVPPPQ" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPJitterDDP">MDVP Jitter DDP:</label>
+                        <input type="text" name="MDVPJitterDDP" id="MDVPJitterDDP" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPShimmer">MDVP Shimmer:</label>
+                        <input type="text" name="MDVPShimmer" id="MDVPShimmer" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPShimmerdB">MDVP Shimmer (dB):</label>
+                        <input type="text" name="MDVPShimmerdB" id="MDVPShimmerdB" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPShimmerAPQ3">MDVP Shimmer APQ3:</label>
+                        <input type="text" name="MDVPShimmerAPQ3" id="MDVPShimmerAPQ3" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPShimmerAPQ5">MDVP Shimmer APQ5:</label>
+                        <input type="text" name="MDVPShimmerAPQ5" id="MDVPShimmerAPQ5" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPAPQ">MDVP APQ:</label>
+                        <input type="text" name="MDVPAPQ" id="MDVPAPQ" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MDVPShimmerDDA">MDVP Shimmer DDA:</label>
+                        <input type="text" name="MDVPShimmerDDA" id="MDVPShimmerDDA" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="NHR">NHR:</label>
+                        <input type="text" name="NHR" id="NHR" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="HNR">HNR:</label>
+                        <input type="text" name="HNR" id="HNR" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="RPDE">RPDE:</label>
+                        <input type="text" name="RPDE" id="RPDE" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="DFA">DFA:</label>
+                        <input type="text" name="DFA" id="DFA" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="spread1">Spread1:</label>
+                        <input type="text" name="spread1" id="spread1" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="spread2">Spread2:</label>
+                        <input type="text" name="spread2" id="spread2" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="D2">D2:</label>
+                        <input type="text" name="D2" id="D2" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="PPE">PPE:</label>
+                        <input type="text" name="PPE" id="PPE" required>
+                    </div>
+
+                    <br> <!-- Line break added after each input -->
+
+                    <button type="submit" class="button">Get Prediction</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Parkinson's Disease Prediction App</p>
+    </footer>
+</body>
+<style>
+    /* Add or modify styles as needed */
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #9fc7a1;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+    .container {
+        background-color: #9fc7a1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #213222;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    input {
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #333;
+    }
+
+    button {
+        background-color: #213222;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #888;
+    }
+</style>
+
+</html>

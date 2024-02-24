@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Customer Reviews</h1>
+    </header>
+
+    <section>
+        <div id="reviews-container">
+            <!-- Display each review in a box -->
+            <div class="review-box" id="review-box-0"></div>
+            <div class="review-box" id="review-box-1"></div>
+            <!-- Add more review boxes as needed -->
+
+            <a href="{{ url_for('add_reviews') }}" class="takelink">Add Your Review</a>
+            <button onclick="goToHomePage()">Back to Home</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const reviewsContainer = document.getElementById('reviews-container');
+
+            function getReviews() {
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                return reviews;
+            }
+
+            function displayReviews() {
+                const reviews = getReviews();
+
+                for (let i = 0; i < reviews.length; i++) {
+                    const reviewBox = document.getElementById(`review-box-${i}`);
+                    if (reviewBox) {
+                        reviewBox.textContent = reviews[i];
+                    }
+                }
+            }
+
+            function goToHomePage() {
+                window.location.href = 'index.html';
+            }
+
+            // Display reviews on page load
+            displayReviews();
+        });
+    </script>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+#reviews-container {
+    text-align: center;
+}
+
+.review-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+}
+
+.takelink, button {
+    margin-top: 20px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.takelink:hover, button:hover {
+    background-color: #555;
+}
+
+</style>
+</html>

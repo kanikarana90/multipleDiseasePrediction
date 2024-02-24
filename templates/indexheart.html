@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you think you have Heart Disease?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main class="box1">
+        <section class="container">
+            <h2>Predict Heart Disease</h2>
+            <div class="box2">
+                <form action="{{ url_for('resultheart') }}" method="post">
+                    <div class="box3">
+                        <label for="Age">Age:</label><br>
+                        <input type="text" name="Age" id="Age" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="Sex">Sex:</label><br>
+                        <input type="text" name="Sex" id="Sex" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="ChestPainType">Chest Pain Type:</label>
+                        <input type="text" name="ChestPainType" id="ChestPainType" required>
+                    </div>
+
+                    <div class="box3">
+                        <label for="RestingBloodPressure">Resting Blood Pressure:</label><br>
+                        <input type="text" name="RestingBloodPressure" id="RestingBloodPressure" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="Cholesterol">Cholesterol:</label><br>
+                        <input type="text" name="Cholesterol" id="Cholesterol" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="FastingBloodSugar">Fasting Blood Sugar:</label><br>
+                        <input type="text" name="FastingBloodSugar" id="FastingBloodSugar" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="RestingECG">Resting Electrocardiographic Results:</label><br>
+                        <input type="text" name="RestingECG" id="RestingECG" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="MaxHeartRate">Maximum Heart Rate Achieved:</label><br>
+                        <input type="text" name="MaxHeartRate" id="MaxHeartRate" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="ExerciseAngina">Exercise Induced Angina:</label><br>
+                        <input type="text" name="ExerciseAngina" id="ExerciseAngina" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="Oldpeak">Oldpeak:</label><br>
+                        <input type="text" name="Oldpeak" id="Oldpeak" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="Slope">Slope:</label><br>
+                        <input type="text" name="Slope" id="Slope" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="NumVesselsColored">Number of Major Vessels Colored by Fluoroscopy:</label><br>
+                        <input type="text" name="NumVesselsColored" id="NumVesselsColored" required><br>
+                    </div>
+
+                    <div class="box3">
+                        <label for="Thalassemia">Thalassemia:</label><br>
+                        <input type="text" name="Thalassemia" id="Thalassemia" required><br>
+                    </div>
+
+                    <br> <!-- Line break added after each input -->
+
+                    <button type="submit" class="button">Get Prediction</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Heart Disease Prediction App</p>
+    </footer>
+</body>
+<style>
+    body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #9fc7a1;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+
+    header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+        .container {
+            background-color: #9fc7a1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #213222;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        button {
+            background-color: #213222;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+</style>
+
+</html>

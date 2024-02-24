@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Medical Clinic</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add any additional styles or links to external stylesheets here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #213222;
+            padding: 15px 30px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <section>
+                <h2>About Us</h2>
+
+                <div class="image-container1">
+                    <div class="img1">
+
+                    </div>
+                    <div class="content1">
+                        <p>It seems like there's an issue with downloading the file from the provided link. If you are trying to download a file using a specific link, make sure that the link is correct and accessible. Additionally, check if there are any restrictions or permissions required to access the file.</p>
+                        <p>If the issue persists, you might want to provide more details or try downloading the file manually to ensure that the link is functional. If you have specific error messages or details about the link, feel free to share them, and I'll do my best to assist you.</p>
+                        <p>It seems like there's an issue with downloading the file from the provided link. If you are trying to download a file using a specific link, make sure that the link is correct and accessible. Additionally, check if there are any restrictions or permissions required to access the file.</p>
+                        <p>If the issue persists, you might want to provide more details or try downloading the file manually to ensure that the link is functional. If you have specific error messages or details about the link, feel free to share them, and I'll do my best to assist you.</p>
+                        <p>It seems like there's an issue with downloading the file from the provided link. If you are trying to download a file using a specific link, make sure that the link is correct and accessible. Additionally, check if there are any restrictions or permissions required to access the file.</p>
+                        <p>If the issue persists, you might want to provide more details or try downloading the file manually to ensure that the link is functional. If you have specific error messages or details about the link, feel free to share them, and I'll do my best to assist you.</p>
+                    </div>
+                </div>
+
+
+                <a href="{{ url_for('bookapp') }}" class="image-container2">
+                    <div class="img2"></div>
+                    <div class="content2">
+                        <h3>Book an appointment</h3>
+                        <h5>It seems like there's an issue with downloading the file from the provided link. If you are trying to download a file using</h5>
+                    </div>
+                </a>
+
+                <div class="content3">
+                    <p>Key features of Medical Clinic:</p>
+
+                    <ul>
+                        <li>Comprehensive Health Services</li>
+                        <li>State-of-the-Art Facilities</li>
+                        <li>Experienced Medical Professionals</li>
+                        <li>Personalized Patient Care</li>
+                        <li>Advanced Diagnostics and Imaging</li>
+                        <!-- Add more key features as needed -->
+                    </ul>
+
+                    <p>We believe in a holistic approach to healthcare, addressing both physical and emotional well-being. Whether you need routine check-ups, specialized treatments, or emergency care, Medical Clinic is here for you.</p>
+
+                    <p>Experience the difference with Medical Clinic – your partner in health.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+     <footer>
+        <div class="square-container top-squares">
+            <a href="{{ url_for('aboutUs') }}" class="square">AboutUS</a>
+            <a href="{{ url_for('aboutDoctors') }}" class="square">Doctors</a>
+        </div>
+        <div class="square-container bottom-squares">
+            <a href="{{ url_for('index') }}" class="square">Home</a>
+            <a href="{{ url_for('add_reviews') }}" class="square">Reviews</a>
+            <a href="{{ url_for('bookapp') }}" class="square">Book An Appointment</a>
+        </div>
+    </footer>
+
+    <!-- Add any additional scripts or links to external scripts here -->
+</body>
+<style>
+    body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #213222;
+            padding: 15px 30px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+    .image-container1 {
+            height: 700px;
+            width: 80%;
+            justify-content: center;
+            margin-left: 120px;
+            overflow: hidden; /* Ensure that child elements do not overflow */
+            display: flex; /* Use flexbox for better layout control */
+        padding-bottom: 20px;
+        }
+
+        .img1 {
+            background-image: url(../static/aboutus1.jpg);
+            background-size: cover; /* Ensure the background image covers the entire div */
+            background-position: center; /* Center the background image */
+            float: left;
+            width: 50%;
+            height: 100%; /* Make the image div take the full height of the container */
+        }
+
+        .content1 {
+            float: right;
+            width: 60%;
+            padding: 15px;
+            margin-left: 35px;
+        }
+
+        .image-container2{
+             height: 400px;
+            width: 80%;
+            justify-content: center;
+            margin-left: 120px;
+            margin-top: 60px;
+            overflow: hidden; /* Ensure that child elements do not overflow */
+            display: flex; /* Use flexbox for better layout control */
+            margin-bottom: 50px;
+        }
+
+        .img2{
+            background-image: url(../static/aboutus2.jpg);
+            background-size: cover; /* Ensure the background image covers the entire div */
+            background-position: center; /* Center the background image */
+            float: left;
+            width: 50%;
+            height: 100%; /* Make the image div take the full height of the container */
+        }
+
+        .content2 {
+            float: right;
+            width: 60%;
+            padding: 15px;
+            margin-left: 35px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content3{
+            padding-left: 45px;
+        }
+        .content2:hover{
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: white;
+            padding: 20px;
+            color: ghostwhite;
+            text-align: center;
+        }
+
+        .square-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .top-squares,
+        .bottom-squares {
+            display: flex;
+        }
+
+        .square {
+            width: 300px;
+            height: 100px;
+            background-color: white;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .square:hover {
+            transform: scale(1.05);
+        }
+        .square span {
+            font-size: 18px;
+        }
+</style>
+</html>

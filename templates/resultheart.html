@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Result</title>
+</head>
+<body>
+
+<div style="text-align: center; margin-top: 50px;">
+    <h1>Heart Test Result</h1>
+
+    {% if diagnosis %}
+        <p style="font-size: 20px; color: {% if diagnosis == 'The person has heart disease' %}red{% else %}green{% endif %};">
+            {{ diagnosis }}
+        </p>
+    {% else %}
+        <p>No diagnosis available</p>
+    {% endif %}
+    <a href="{{ url_for('resultheart') }}">Go to Result</a>
+
+    <a href="{{ url_for('indexheart') }}" style="text-decoration: none; color: blue; font-size: 16px; margin-top: 20px;">Go back to Home</a>
+</div>
+
+</body>
+</html>
+

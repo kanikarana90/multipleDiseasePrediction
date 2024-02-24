@@ -1,0 +1,1004 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction App - Predict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+
+<section class="uppersec">
+    <div class="middle-boxes">
+        <div class="box" onclick="openDetectionPage('diabetes')">
+            <a href="{{ url_for('profile', username=username, disease='diabetes') }}" class="box123">Diabetes Prognosis</a>
+            <p>Click to detect diabetes</p>
+        </div>
+        <div class="box" onclick="openDetectionPage('heart')">
+            <a href="{{ url_for('profile', username=username, disease='heart') }}" class="box123">Heart Health Prognosis</a>
+            <p>Click to detect heart issues</p>
+        </div>
+        <div class="box" onclick="openDetectionPage('parkinson')">
+            <a href="{{ url_for('profile', username=username, disease='parkinson') }}" class="box123">Parkinson's Prognostication</a>
+            <p>Click to detect Parkinson's disease</p>
+        </div>
+    </div>
+</section>
+
+    <article class="content">
+        <div class="appointment1">
+            <div class="appointment">
+                <h3 class="bookApp">Schedule your Appointment Online>>></h3>
+                <a href="{{ url_for('bookapp') }}" class="boxapp">Book An Appointment</a>
+            </div>
+        </div>
+        <div class="takecare">
+            <h2 class="takeh2">Take Care of your health</h2>
+            <div class="take">
+                <div class="take1">
+                    <img src="{{ url_for('static', filename='take4.png') }}" alt="Logo" class="tcare1">
+                    <h3 class="take12">Health Plans</h3>
+                    <h3 class="take12">We Accept</h3>
+                    <p class="takepara1">In the heart of a bustling city, where<br> the rhythm of life pulses through crowded streets<br> and towering skyscrapers</p>
+                    <a href="{{ url_for('Insurance') }}" class="takelink">Read more>>></a>
+                </div>
+                <div class="take2">
+                    <img src="{{ url_for('static', filename='take5.png') }}" alt="Logo" class="tcare2">
+                    <h3 class="take22">No.1 Medical</h3>
+                    <h3 class="take22">Clinic in area</h3>
+                    <p class="takepara1">In the heart of a bustling city, where<br> the rhythm of life pulses through crowded streets<br> and towering skyscrapers</p>
+                    <a href="{{ url_for('aboutUs') }}" class="takelink">Read more>>></a>
+                </div>
+                <div class="take3">
+                    <img src="{{ url_for('static', filename='take6.png') }}" alt="Logo" class="tcare3">
+                    <h3 class="take32">Specialist</h3>
+                    <h3 class="take32">Doctors</h3>
+                    <p class="takepara1">In the heart of a bustling city, where<br> the rhythm of life pulses through crowded streets<br> and towering skyscrapers</p>
+                    <a href="{{ url_for('aboutDoctors') }}" class="takelink">Read more>>></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add a modal container -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="updateTitle"></h2>
+                <div id="updateDetails"></div>
+            </div>
+        </div>
+
+        <!-- Update the recent-updates section -->
+        <section class="recent-updates">
+            <h2 class="textRec">Recent Updates</h2>
+            <div class="update">
+                <div class="update-article">
+                    <img src="{{ url_for('static', filename='update1.jpg') }}" alt="img" >
+                    <h3>New Medical Research Findings</h3>
+                    <p>Discover the latest research findings in the medical field that can impact your health.</p>
+                    <a href="#" class="read-more" onclick="showDetails('New Medical Research Findings', 'Details for Update 1')">Read More</a>
+                </div>
+
+                <div class="update-article">
+                    <img src="{{ url_for('static', filename='update2.jpg') }}" alt="img" >
+                    <h3>Health Tips for a Better Lifestyle</h3>
+                    <p>Learn valuable tips on how to maintain a healthy lifestyle and improve your well-being.</p>
+                    <a href="#" class="read-more" onclick="showDetails('Health Tips for a Better Lifestyle', 'Details for Update 2')">Read More</a>
+                </div>
+
+                <div class="update-article">
+                    <img src="{{ url_for('static', filename='update1.jpg') }}" alt="img" >
+                    <h3>New Medical Research Findings</h3>
+                    <p>Discover the latest research findings in the medical field that can impact your health.</p>
+                    <a href="#" class="read-more" onclick="showDetails('New Medical Research Findings', 'Details for Update 1')">Read More</a>
+                </div>
+                    <!-- Add more update articles as needed -->
+            </div>
+        </section>
+
+        <!-- Include the JavaScript snippet for modal functionality -->
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // Function to show modal with details
+            function showDetails(title, details) {
+                document.getElementById("updateTitle").innerHTML = title;
+                document.getElementById("updateDetails").innerHTML = details;
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+        <h2 class="customerR">Customer Reviews</h2>
+        <div id="reviews-container">
+            <div id="reviews-list" class="review-box-container"></div>
+            <a href="{{ url_for('add_reviews') }}" class="takelink">Show more>></a>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const reviewsContainer = document.getElementById('reviews-list');
+
+                function getReviews() {
+                    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                    return reviews;
+                }
+
+                function displayReviews() {
+                    reviewsContainer.innerHTML = '';
+
+                    const reviews = getReviews();
+
+                    for (let i = 0; i < 5; i++) {
+                        const reviewBox = document.createElement('div');
+                        reviewBox.className = 'review-box';
+                        reviewBox.textContent = reviews[i];
+                        reviewsContainer.appendChild(reviewBox);
+                    }
+                }
+
+                function goToAddReviewsPage() {
+                    window.location.href = 'add_reviews.html';
+                }
+
+                // Display reviews on page load
+                displayReviews();
+            });
+        </script>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p>Phone: <a href="tel:+123456789">+123456789</a></p>
+                <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+                <p><a href="#map">Visit Us</a></p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <a href="{{ url_for('index') }}" class="Qlinks">Home</a>
+                <a href="{{ url_for('contactUs') }}" class="Qlinks">ContactUs</a>
+                <a href="{{ url_for('Insurance') }}" class="Qlinks">Insurance</a>
+                <a href="{{ url_for('aboutUs') }}" class="Qlinks">AboutUs</a>
+            </div>
+
+            <!-- Update the social-icons section in the footer -->
+            <div class="footer-section social-icons">
+                <h3>Follow Us</h3>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</article>
+{#    ********************************************************#}
+
+    <!-- Add this modal HTML at the end of your 'app1.html' file -->
+<div id="loginSignupModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <!-- Your login/signup form goes here -->
+        <form id="loginForm" action="{{ url_for('login') }}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <hr>
+
+        <p>Not a member? <a href="{{ url_for('signup') }}">Sign up</a></p>
+    </div>
+</div>
+
+<!-- Add this JavaScript code at the end of your 'app1.html' file -->
+<script>
+    // Get the modal
+    var modal = document.getElementById("loginSignupModal");
+
+    // Function to open disease-specific detection page or show login/signup modal
+    function openDetectionPage(disease) {
+        // Check if the user is already authenticated (you may need to implement this check)
+        var isAuthenticated = false;  // Replace with your authentication check
+
+        if (isAuthenticated) {
+            // If authenticated, navigate to the disease detection page
+            var diseaseURL;
+
+            // Determine the URL based on the selected disease
+            if (disease === "diabetes") {
+                diseaseURL = "/diabetes-detection";
+            } else if (disease === "heart") {
+                diseaseURL = "/heart-disease-detection";
+            } else if (disease === "parkinson") {
+                diseaseURL = "/parkinson-detection";
+            } else {
+                // Handle other diseases or invalid input
+                return;
+            }
+
+            window.location.href = diseaseURL;
+        } else {
+            // If not authenticated, show the login/signup modal
+            modal.style.display = "block";
+        }
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+
+</body>
+
+
+<style>
+    /* style.css */
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html{
+        scroll-behavior: smooth;
+        width: 95em;
+    }
+ {#   ****************navigation bar******#}
+ body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(whitesmoke, white);
+     overflow-x: hidden; /* Remove vertical scrollbar */
+}
+
+ /* Header styles */
+header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow navigation links to wrap to the next line */
+}
+
+.navigation-links li {
+    margin-right: 20px;
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation-links a:hover {
+    color: #3498db;
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+{#********************************Section*********************************#}
+/* Section styles */
+.uppersec {
+    background-image: url(../static/header6.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 95rem;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Add relative positioning */
+    height: 40em /* Set height to auto for responsiveness */
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 1000;
+}
+
+.middle-boxes {
+    display: flex;
+    justify-content: center;
+    margin-top: 250px; /* Adjust margin for spacing */
+}
+
+.box {
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 27px;
+    border-radius: 10px;
+    width: 100%; /* Set width to 100% for responsiveness */
+    max-width: 250px; /* Set a maximum width if needed */
+    margin: 0 auto; /* Center the boxes */
+}
+
+.box123 {
+    font-size: 25px;
+    padding: 18px;
+    color: #213222;
+}
+
+p{
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+    .text-container{
+        color: white;
+    }
+    .box {
+        /* Your existing box styling */
+        margin: 10px; /* Adjust margin as needed */
+        padding: 60px;
+        background-color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        text-decoration: none; /* Remove underline for anchor tags */
+        color: black; /* Set text color */
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .box:hover {
+        transform: scale(1.05);
+    }
+{#    ********************Appointment*********************#}
+    .appointment{
+        display: flex;
+        font-size: 25px;
+        background-color: #213222;
+        height: 100px;
+        float: none;
+        letter-spacing: 3px;
+        color: white;
+         padding-top: 27px;
+        padding-left: 200px;
+        text-align: center;
+    }
+    .boxapp{
+        float: left;
+        font-size: 20px;
+        height: 30px;
+        padding-right: 10px;
+        margin-top: 7px;
+        padding-top: 2px;
+        letter-spacing: 1px;
+        margin-left: 80px;
+        padding-left: 10px;
+        background-color: white;
+        padding-bottom: 10px;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .boxapp:hover{
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+    a {
+        color: #213222;
+        transition: transform 0.3s ease-in-out;
+    }
+    a:hover {
+        transform: scale(1.05);
+    }
+    .textRec{
+        background-color: #213222;
+        font-family: 'Pacifico', cursive;
+        color: whitesmoke;
+        font-size: 20px;
+        padding: 20px;
+        letter-spacing: 1px;
+    }
+
+    {#****************************** Take care box ********************************#}
+
+     .takecare {
+            background-color: #94bb96;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         width: 100%;
+        }
+
+        .takeh2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .take {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .take1,
+        .take2,
+        .take3 {
+            background-color: #213222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+    .take1:hover,
+    .take2:hover,
+    .take3:hover {
+        transform: scale(1.05);
+    }
+
+
+        .tcare1,
+        .tcare2,
+        .tcare3 {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .take12,
+        .take22,
+        .take32 {
+            color: whitesmoke;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .takepara1 {
+            color: ghostwhite;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .takelink {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .take1 a,
+        .take2 a,
+        .take3 a {
+            display: block;
+            text-align: right;
+        }
+
+        .takelink {
+            display: block;
+            margin-top: 10px;
+            color: #7f6cb1;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .takelink:hover {
+            color: #5e4a99;
+            text-decoration: underline;
+        }
+{#*************************************************review container*******************************#}
+    #reviews-container {
+        background-color: #94bb96;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 100%; /* Set max-width to 100% for responsiveness */
+        margin: 0 auto;
+    }
+    .customerR{
+        background-color: #213222;
+        font-family: 'Pacifico', cursive;
+        color: whitesmoke;
+        font-size: 20px;
+        padding: 20px;
+        letter-spacing: 1px;
+    }
+    #reviews-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .review-box-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .review-box {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%; /* Set width to 100% initially */
+    }
+
+    .review-box:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 99% /* Decrease width on hover or as needed */
+    }
+
+    .review-text {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+{#        ******************Style for the update box*****************#}
+    /* Style for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Style for the modal content */
+
+
+/* Style for the modal content */
+.modal-content {
+  background-color: #f8f8f8;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Style for the close button */
+.close {
+  color: #555;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+}
+{#*******************/* Style for the update box */#}
+
+    /* Style for the recent updates section */
+.recent-updates {
+    height: auto;
+    padding-bottom: 15px;
+    background-color: #94bb96;
+}
+
+/* Style for the update articles container */
+.update {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Style for each update article */
+
+.update-article {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+    transition: transform 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%; /* Set width to 100% for responsiveness */
+    max-width: 400px; /* Set a maximum width if needed */
+}
+
+.update-article:hover{
+     transform: scale(1.05);
+}
+
+/* Style for the image in each update article */
+.update-article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Style for the heading in each update article */
+.update-article h3 {
+  color: #333;
+}
+
+/* Style for the paragraph in each update article */
+.update-article p {
+  color: #666;
+}
+
+/* Style for the "Read More" link in each update article */
+    .read-more {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff; /* Change the color as needed */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .boxapp:hover{
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+{#******************FOOTER*********************#}
+        footer {
+            background-color: #213222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+             flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .footer-section h3 {
+            color: white;
+            padding-bottom: 10px;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .quick-links a {
+            display: block;
+            margin-bottom: 8px;
+            color: ghostwhite;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        .social-icons a:hover{
+            color: mediumpurple;
+        }
+
+        .newsletter-signup {
+            margin-top: 20px;
+        }
+{#***********************************************#}
+    /* Add this CSS to your existing stylesheet or create a new one */
+
+#loginSignupModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+hr {
+    margin: 16px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+{#************************************************************************************************#}
+/* Media query for screens with a maximum width of 768px (typical for phones) */
+@media only screen and (max-width: 768px) {
+    /* Header styles */
+    .text-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    .navigation-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #213222;
+        width: 100%;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navigation-links.active {
+        display: flex;
+    }
+
+    .navigation-links li {
+        margin: 10px 0;
+    }
+
+    /* Section styles */
+     section {
+            height: auto;
+            min-height: 100vh;
+        }
+
+    .middle-boxes {
+        margin-top: 50px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 80%;
+        margin: 10px 0;
+    }
+
+    /* Appointment styles */
+    .appointment {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .boxapp {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    /* Take care box styles */
+    .takecare {
+        padding: 10px;
+    }
+
+    .take1,
+    .take2,
+    .take3 {
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Review container styles */
+    #reviews-container {
+        max-width: 600px; /* Adjust the maximum width for larger screens */
+    }
+
+        .review-box {
+            padding: 15px;
+            width: 100%; /* Set width to 100% for responsiveness on smaller screens */
+        }
+
+        .review-box:hover {
+            width: 100%; /* Keep the width at 100% on hover for smaller screens */
+        }
+
+        .review-text {
+            font-size: 14px;
+        }
+        .update-article {
+        width: 100%; /* Adjust width for smaller screens */
+    }
+}
+
+/* Styles for smaller screens */
+@media screen and (max-width: 480px) {
+  #reviews-container {
+    max-width: 90%; /* Adjust the maximum width for smaller screens */
+  }
+
+  .review-box-container {
+    /* Increase the height or add styles for smaller screens */
+    min-height: 200px;
+  }
+}
+</style>
+</html>

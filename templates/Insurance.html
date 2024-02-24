@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance - Your Healthcare</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #b9dcbc;
+            color: #333;
+        }
+
+        header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 5%; /* Use percentage for padding to adapt to different screen sizes */
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow navigation links to wrap to the next line */
+}
+
+.navigation-links li {
+    margin-right: 20px;
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation-links a:hover {
+    color: #3498db;
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="logo-container">
+            <ul >
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                {# <li><a href="{{ url_for('about') }}">About Us</a></li> #}
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Insurance Information</h2>
+
+        <p>At Your Healthcare, we understand the importance of having comprehensive healthcare coverage. Here is some information about insurance options:</p>
+
+        <ul>
+            <li><strong>Health Maintenance Organization (HMO)</strong></li>
+                <li><p>Coverage: Requires members to choose a primary care physician (PCP) and get referrals to see specialists.
+                    <br>Generally, only covers care provided by in-network doctors and facilities.</p></li>
+                 <li><p>Costs: Lower out-of-pocket costs but limited flexibility in choosing healthcare providers.</p></li>
+            <li><strong>Preferred Provider Organization (PPO):</strong></li>
+                <li><p>Coverage: Offers more flexibility in choosing healthcare providers, both in-network and out-
+                    <br>of-network. Referrals are not required to see specialists.</p></li>
+                 <li><p>Costs: Higher premiums and more flexibility, but lower costs when using in-network providers.</p></li>
+            <li><strong>Exclusive Provider Organization (EPO):</strong></li>
+                <li><p>Coverage: Similar to PPO but typically doesn't cover any out-of-network care except in emergencies.</p>
+                 <li><p>Costs: Moderate premiums, and lower out-of-pocket costs when using in-network providers.</p></li>
+            <li><strong>High Deductible Health Plan (HDHP) with Health Savings Account (HSA):</strong></li>
+                <li><p>Coverage: Requires higher out-of-pocket spending before coverage kicks in. Often paired
+                <br>with an HSA to save money for medical expenses tax-free.</p></li>
+                 <li><p>Costs: Lower premiums but higher out-of-pocket costs until the deductible is met.</p></li>
+            <li><strong>Catastrophic Health Insurance:</strong></li>
+                <li><p>Coverage: Provides coverage for major medical expenses after a high deductible is met.
+                <br>Typically for young, healthy individuals.</p></li>
+                 <li><p>Costs: Lowest premiums but high out-of-pocket costs until the deductible is reached.</p></li>
+            <li><strong>Contact Us:</strong> If you have specific questions about insurance coverage or billing, feel free to <a href="contactUs.html">contact us</a>.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you think you have diabetes?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <main class="box1">
+        <section class="container">
+            <h2>Predict Diabetes</h2>
+<div class="box2">
+    <form action="{{ url_for('result') }}" method="post">
+        <div class="box3">
+            <label for="Pregnancies">Number of Pregnancies:</label><br>
+            <input type="text" name="Pregnancies" id="Pregnancies" required><br>
+        </div>
+
+        <div class="box3"><label for="Glucose">Glucose Level:</label><br>
+        <input type="text" name="Glucose" id="Glucose" required><br></div>
+
+        <div class="box3"><label for="BloodPressure">Blood Pressure:</label><br>
+        <input type="text" name="BloodPressure" id="BloodPressure" required><br></div>
+
+        <div class="box3"><label for="SkinThickness">Skin Thickness:</label><br>
+        <input type="text" name="SkinThickness" id="SkinThickness" required><br></div>
+
+        <div class="box3"><label for="Insulin">Insulin:</label><br>
+        <input type="text" name="Insulin" id="Insulin" required><br></div>
+
+        <div class="box3"><label for="BMI">BMI:</label><br>
+        <input type="text" name="BMI" id="BMI" required><br></div>
+
+        <div class="box3"><label for="DiabetesPedigreeFunction">Diabetes Pedigree Function:</label><br>
+        <input type="text" name="DiabetesPedigreeFunction" id="DiabetesPedigreeFunction" required><br></div>
+
+        <div class="box3"><label for="Age">Age:</label><br>
+        <input type="text" name="Age" id="Age" required><br></div>
+
+        <br> <!-- Line break added after each input -->
+
+        <button type="submit" class="button">Get Prediction</button>
+    </form>
+</div>
+        </section>
+    </main>
+</body>
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #94bb96;
+            color: #333;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Header styles */
+header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+        .container {
+            background-color: #94bb96;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: #213222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .box3 {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</html>
+

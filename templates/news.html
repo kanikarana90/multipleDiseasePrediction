@@ -1,0 +1,58 @@
+<!-- news.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare App Updates</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your stylesheet -->
+</head>
+<body>
+
+    <section class="recent-updates">
+        <h2>Healthcare App Updates</h2>
+
+        <div class="update-article" id="update1">
+            <img src="update1.jpg" alt="Update Image">
+            <h3>New Medical Research Findings</h3>
+            <p>Discover the latest research findings in the medical field that can impact your health.</p>
+            <a href="#update1">Read More</a>
+        </div>
+
+        <div class="update-article" id="update2">
+            <img src="update2.jpg" alt="Update Image">
+            <h3>Health Tips for a Better Lifestyle</h3>
+            <p>Learn valuable tips on how to maintain a healthy lifestyle and improve your well-being.</p>
+            <a href="#update2">Read More</a>
+        </div>
+
+        <!-- Add more update articles as needed -->
+
+    </section>
+
+    <!-- Include the JavaScript snippet for smooth scrolling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            const readMoreLinks = document.querySelectorAll('.update-article a');
+            readMoreLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const sectionId = this.getAttribute('href').substring(1);
+                    scrollToSection(sectionId);
+                });
+            });
+        });
+    </script>
+
+</body>
+<style>
+
+</style>
+</html>

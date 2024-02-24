@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #94bb96;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #555;
+        }
+header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 5%; /* Use percentage for padding to adapt to different screen sizes */
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow navigation links to wrap to the next line */
+}
+
+.navigation-links li {
+    margin-right: 20px;
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: #9fc7a1;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation-links a:hover {
+    color: #3498db;
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        #reviews-container {
+            background-color: #213222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 80%;
+        }
+
+        #reviews-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #reviews-list li {
+            background-color: #94bb96;
+            border: 1px solid #c7b9e8;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #add-review-form {
+            background-color: #94bb96;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 96.5%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #213222;
+        }
+
+        textarea {
+            width: 98%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #213222;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #213222;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #94bb96;
+        }
+
+        a.takelink {
+            display: block;
+            margin-top: 10px;
+            color: #213222;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a.takelink:hover {
+            text-decoration: underline;
+        }
+
+        a.home-link {
+            display: block;
+            margin-top: 20px;
+            color: #555;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a.home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="logo-container">
+            <ul >
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                {# <li><a href="{{ url_for('about') }}">About Us</a></li> #}
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div id="reviews-container">
+            <h2>Customer Reviews</h2>
+            <ul id="reviews-list"></ul>
+            <div id="add-review-form">
+                <label for="new-review">Your Review:</label>
+                <textarea id="new-review" rows="4" cols="50"></textarea>
+                <button onclick="addReview()">Submit Review</button>
+            </div>
+        </div>
+        <button onclick="goToHomepage()" class="takelink">Go to Homepage</button>
+        <script>
+            //going to homepage
+            function goToHomepage() {
+                window.location.href = '{{ url_for('index') }}';
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const reviewsList = document.getElementById('reviews-list');
+                const newReviewTextarea = document.getElementById('new-review');
+
+                function getReviews() {
+                    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                    return reviews;
+                }
+
+                function displayReviews() {
+                    reviewsList.innerHTML = '';
+
+                    const reviews = getReviews();
+                    for (let i = 0; i < reviews.length; i++) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = reviews[i];
+                        reviewsList.appendChild(listItem);
+                    }
+                }
+
+                function addReview() {
+                    const newReview = newReviewTextarea.value.trim();
+
+                    if (newReview !== '') {
+                        const reviews = getReviews();
+                        reviews.push(newReview);
+                        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                        // Clear the textarea
+                        newReviewTextarea.value = '';
+
+                        // Refresh the displayed reviews
+                        displayReviews();
+                    }
+                }
+
+                // Display reviews on page load
+                displayReviews();
+
+                // Attach the addReview function to the submit button click event
+                document.querySelector('button').addEventListener('click', addReview);
+            });
+        </script>
+    </section>
+</body>
+</html>

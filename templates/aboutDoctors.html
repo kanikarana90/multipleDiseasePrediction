@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction App - Predict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="logo-container">
+            <ul>
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <div class="text-container">
+                    <h3 class="med1">Medical Clinic</h3>
+                    <h5 class="med2">Exams & Diagnostics</h5>
+                </div>
+            </ul>
+            <ul class="navigation-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contactUs') }}">ContactUs</a></li>
+                <li><a href="{{ url_for('Insurance') }}">Insurance</a></li>
+                <li><a href="{{ url_for('aboutUs') }}">AboutUs</a></li>
+                <!-- Add signup and login links -->
+                <img src="{{ url_for('static', filename='profileLogo1.png') }}" alt="Logo" class="logo">
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    <div class="image-container1">
+        <div class="img1"></div>
+        <div class="content1">
+            <h3>Dr. Kim Ji-yoon (Diabetes)</h3>
+            <p>An endocrinologist specializing in diabetes care, exemplifies a compassionate and dedicated healthcare professional. Her mornings begin with a thorough review of patient charts, where she familiarizes herself with the unique challenges each individual faces in managing diabetes. In consultations, Dr. Rodriguez fosters a warm and welcoming environment, actively listening to her patients' concerns and translating complex medical information into accessible advice. Her examination room is equipped with cutting-edge technology for monitoring glucose levels, and she combines this with personalized counseling to empower patients in taking control of their health. Dr. Rodriguez is not only committed to individual patient care but also engages in continuous research to stay updated on the latest advancements in diabetes management. Beyond the clinic, she participates in multidisciplinary meetings and community outreach programs, emphasizing a holistic and collaborative approach to diabetes care. At the end of the day, Dr. Rodriguez reflects on the positive impact she has made in the lives of her patients, embodying the qualities of a healthcare professional dedicated to enhancing both individual well-being and community health.</p>
+        </div>
+    </div>
+
+    <div class="image-container2">
+        <div class="content2">
+            <h3>Dr. Kim Joon-ho (Heart)</h3>
+            <p>A distinguished cardiologist renowned for his expertise in heart health. With a genuine passion for cardiovascular medicine, Dr. Harper starts his day by reviewing the intricate details of patient histories and diagnostic reports. As a heart specialist, he possesses a keen understanding of the delicate balance required to maintain optimal cardiac function. In his consultations, Dr. Harper combines clinical precision with a compassionate bedside manner, creating a space where patients feel both understood and well-informed about their cardiovascular health. His office is equipped with state-of-the-art technology for comprehensive cardiac assessments, allowing him to tailor treatment plans to the unique needs of each individual. Beyond the confines of his practice, Dr. Harper actively engages in research to stay abreast of the latest advancements in cardiology, ensuring his patients benefit from cutting-edge therapies. With a commitment to preventive care, he educates his patients on lifestyle modifications and risk factor management, emphasizing a holistic approach to heart health. Dr. Harper's unwavering dedication to his patients and the advancement of cardiovascular medicine makes him a beacon of hope and healing in the realm of cardiology.</p>
+        </div>
+        <div class="img2"></div>
+    </div>
+
+    <div class="image-container3">
+        <div class="img3"></div>
+        <div class="content3">
+            <h3>Dr. Lee Min-seok (Parkinson)</h3>
+            <p>A highly regarded neurologist specializing in Parkinson's disease. Dr. Mitchell's mornings are dedicated to delving into the intricacies of patient cases, studying the nuanced progression of Parkinson's symptoms. As a Parkinson's specialist, she approaches each consultation with a profound understanding of the challenges faced by her patients and their families. Dr. Mitchell employs a compassionate and holistic approach, tailoring treatment plans to address both the physical and emotional aspects of Parkinson's. Her office is equipped with cutting-edge diagnostic tools, allowing for precise assessments of motor function and symptom severity. Beyond her clinical duties, Dr. Mitchell actively engages in ongoing research, contributing to the evolving landscape of Parkinson's care. With a commitment to enhancing the quality of life for those affected by this neurological condition, Dr. Mitchell stands as a beacon of expertise and empathy in the realm of Parkinson's disease.</p>
+        </div>
+    </div>
+
+    <div class="image-container4">
+        <div class="content4">
+            <h3>Dr. Park Hyun-woo (Diabetes)</h3>
+            <p>His commitment extends to education, as she conducts workshops and seminars, imparting knowledge and skills to both newly diagnosed patients and the broader community. Her passion for empowering individuals with diabetes goes beyond the confines of her office, as she actively advocates for awareness and prevention in various community forums. Dr. Rodriguez's holistic approach to patient care is evident in her collaboration with a diverse healthcare team, including nutritionists and nurses, ensuring that her patients receive comprehensive and well-rounded support. With a balance of empathy, expertise, and a tireless dedication to staying at the forefront of her field, Dr. Rodriguez serves as a beacon of support for those navigating the intricate landscape of diabetes management.</p>
+        </div>
+        <div class="img4"></div>
+    </div>
+
+    <div class="image-container5">
+        <div class="img5"></div>
+        <div class="content5">
+            <h3>Dr. Kim Woo-jin (Heart)</h3>
+            <p>An expertise extends beyond the clinical setting, as he plays a pivotal role in community outreach programs, conducting seminars and workshops to raise awareness about cardiovascular health. His dedication to patient education is evident in his ability to demystify complex cardiac conditions, ensuring that individuals not only receive top-notch medical care but also understand the importance of proactive heart maintenance. In interdisciplinary collaborations, Dr. Harper fosters a team approach, working closely with dietitians, exercise physiologists, and other specialists to provide comprehensive cardiovascular care. Whether diagnosing and treating intricate heart conditions or advocating for preventive measures, Dr. Harper embodies the qualities of a compassionate and forward-thinking heart specialist, leaving an indelible impact on the well-being of his patients and the broader community.</p>
+        </div>
+    </div>
+
+    <div class="image-container6">
+        <div class="content6">
+            <h3>Dr. Kim Chang-min (Parkinson)</h3>
+            <p>His dedication to Parkinson's care extends to patient advocacy and education. She invests time in support groups, offering not just medical expertise but also a comforting presence for individuals navigating the challenges of Parkinson's. In her consultations, Dr. Mitchell ensures open communication, empowering patients with a comprehensive understanding of their condition and the available treatment options. Her commitment to a multidisciplinary approach is evident in collaborations with physical therapists and speech pathologists, aiming to address the diverse facets of Parkinson's symptoms. Dr. Mitchell's unwavering advocacy for research and community engagement makes her not only a specialist in Parkinson's disease but also a compassionate ally for those on the journey of managing this complex neurological condition.</p>
+        </div>
+        <div class="img6"></div>
+    </div>
+
+    <div class="image-container7">
+        <div class="img7"></div>
+        <div class="content7">
+            <h3>Dr. Lee Jae-hyun (Diabetes)</h3>
+            <p>He seamlessly intertwines medical expertise with genuine empathy. Her mornings are dedicated to meticulous chart reviews, ensuring a nuanced understanding of each patient's journey. During consultations, she employs a personalized and compassionate approach, transforming complex medical information into manageable steps for her patients. Dr. Rodriguez's office becomes a haven where individuals feel heard, supported, and empowered to navigate the challenges of diabetes. Beyond the clinical setting, her involvement in community outreach and educational initiatives showcases a commitment to not only treating the condition but also preventing its onset. Dr. Rodriguez stands as a testament to the transformative power of a healthcare professional who not only heals with knowledge and skill but also uplifts with understanding and kindness.</p>
+        </div>
+    </div>
+
+    <div class="image-container8">
+        <div class="content8">
+            <h3>Dr. Jung Hae-rin (Heart)</h3>
+            <p>A distinguished cardiologist, begins her day immersed in the intricate world of cardiovascular medicine. With a fervent dedication to heart health, she meticulously reviews patient records and stays abreast of the latest advancements in cardiology. Dr. Rodriguez's consultations reflect a harmonious blend of clinical expertise and compassionate care, creating a reassuring atmosphere for her patients. Her office is a haven equipped with state-of-the-art technology for comprehensive cardiac assessments, enabling precise diagnoses and tailored treatment plans. Beyond her clinical duties, Dr. Rodriguez actively engages in community outreach programs, advocating for preventive measures and educating individuals about the importance of heart health. With a commitment to both cutting-edge cardiac care and patient well-being, Dr. Elena Rodriguez stands as a beacon of expertise and empathy in the realm of cardiology.</p>
+        </div>
+        <div class="img8"></div>
+    </div>
+
+<footer>
+        &copy; 2023 [Your Company Name] | Book an Appointment <a href="{{ url_for('bookapp') }}" class="appo">Book Now</a>
+    </footer>
+
+</body>
+<style>
+    body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #213222;
+            padding: 15px 30px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+    background-color: #213222;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 20px;
+}
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.text-container {
+    color: white;
+    float: right;
+    text-align: center;
+    flex: 1;
+}
+
+.med1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    padding-left: 12px;
+}
+
+.med2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #bdc3c7;
+    padding-left: 12px;
+}
+
+.navigation-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links li {
+    margin-right: 20px; /* Adjust spacing between links as needed */
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navigation-links a:hover {
+    color: #94bb96; /* Hover color */
+}
+
+/* Adjust logo and text positioning */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    order: 1; /* Move logo to the left */
+    max-height: 40px; /* Adjust logo height as needed */
+    filter: invert(1); /* Invert the color to make it white */
+}
+
+.text-container {
+    text-align: right;
+    flex: 1;
+}
+{#****************************************************************************************************************************************#}
+.image-container1{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img1{
+        background-image: url(../static/doctor1.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content1{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container2{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img2{
+        background-image: url(../static/doctor2.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content2{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container3{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img3{
+        background-image: url(../static/doctor3.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content3{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container4{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img4{
+        background-image: url(../static/doctor4.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        margin-left: 20px;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content4{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container5{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img5{
+        background-image: url(../static/doctor5.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content5{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container6{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img6{
+        background-image: url(../static/doctor6.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        padding-left: 20px;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content6{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container7{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img7{
+        background-image: url(../static/doctor7.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content7{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .image-container8{
+    height: 400px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 120px;
+    margin-top: 60px;
+    overflow: hidden; /* Ensure that child elements do not overflow */
+    display: flex; /* Use flexbox for better layout control */
+    \margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+    .img8{
+        background-image: url(../static/doctor8.jpg);
+        background-size: cover; /* Ensure the background image covers the entire div */
+        background-position: center; /* Center the background image */
+        float: left;
+        width: 60%;
+        height: 100%; /* Make the image div take the full height of the container */
+    }
+
+    .content8{
+        float: right;
+        width: 60%;
+        padding-right: 15px;
+        margin-left: 35px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        padding-top: 40px;
+        height: 50px;
+        }
+
+        .appo{
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px ;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+</style>
+</html>
